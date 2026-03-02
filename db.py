@@ -68,3 +68,22 @@ def listar_dados_ID(usuario_id):
             print("Usuário não encontrado")
     finally:
         conn.close()
+
+
+def deletar_id(usuario_id):
+    conn = conectar()
+    cursor = conn.cursor()
+
+    try:
+        cursor.execute("SELECT * FROM usuarios WHERE id = ?", (usuario_id, ))
+        usuario = cursor.fetchone()
+
+        if usuario:
+            cursor.execute("DELETE FROM usuarios WHERE id = ?", (usuario_id))
+            conn.commit()
+            print(f"Usuário {usuario['nome']} deletado(a) com sucesso! ")
+        else:
+            print("Usuário não encontrado!")
+
+    finally:
+        conn.close()
