@@ -1,8 +1,8 @@
-from db import * 
+from interface.menus import *
 
 def main():
-    criar_tabela_usuarios()
-    inserir_dados('Gabriel', 21)
+    inicializar_sistema()
+    
 
 
 if __name__ == '__main__':
